@@ -1,2 +1,2 @@
 # LSE-ADHD-Project
-The repo for my ADHD app.
+For my master's program I am developing a game-app, that can detect ADHD.
