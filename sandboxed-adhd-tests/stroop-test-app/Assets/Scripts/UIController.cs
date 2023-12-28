@@ -84,17 +84,16 @@ public class UIController : MonoBehaviour
                 lbColorWord.style.color = new Color(255, 255, 0);
                 break;
         }
-
     }
 
     private void ChangeColor(int colorNr)
     {
-        this.colorWordColor = (ColorWordColor)colorNr;
+        colorWordColor = (ColorWordColor)colorNr;
     }
 
 
     private void ChangeText(int textNr)
     {
-        this.colorWordText = (ColorWordText)textNr;
+        colorWordText = (ColorWordText)textNr;
     }
 }
