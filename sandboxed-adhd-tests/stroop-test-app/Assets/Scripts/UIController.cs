@@ -58,6 +58,11 @@ public class UIController : MonoBehaviour
 
         running = true;
 
+        btGreen.clicked += GreenClicked;
+        btRed.clicked += RedClicked;
+        btBlue.clicked += BlueClicked;
+        btYellow.clicked += YellowClicked;
+
         StartCoroutine(ChangeColorAndTextRoutine());
     }
 
@@ -122,5 +127,25 @@ public class UIController : MonoBehaviour
     private void ChangeText(int textNr)
     {
         colorWordText = (ColorWordText)textNr;
+    }
+
+    private void GreenClicked()
+    {
+        Debug.Log("Green has been pressed.");
+    }
+
+    private void RedClicked()
+    {
+        Debug.Log("Red has been pressed.");
+    }
+
+    private void BlueClicked()
+    {
+        Debug.Log("Blue has been pressed.");
+    }
+
+    private void YellowClicked()
+    {
+        Debug.Log("Yellow has been pressed.");
     }
 }
