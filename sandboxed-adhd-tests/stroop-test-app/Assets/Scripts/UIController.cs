@@ -39,6 +39,10 @@ public class UIController : MonoBehaviour
     bool running = false;
     int numIter = 0;
 
+    int userInput = 0;
+    bool correctlyAnswered = false;
+    int userScore = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -70,6 +74,8 @@ public class UIController : MonoBehaviour
     {
         while (running)
         {
+            correctlyAnswered = false;
+
             ++numIter;
 
             if(numIter % 4 == 0)
@@ -104,10 +110,22 @@ public class UIController : MonoBehaviour
                     break;
             }
 
+            if (userInput == (int)colorWordColor && colorWordColor != 0)
+            {
+                correctlyAnswered = true;
+            }
+
             yield return new WaitForSeconds(2.0f);
 
             lbColorWord.style.color = Color.white;
             lbColorWord.text = ".";
+
+            if(correctlyAnswered)
+            {
+                ++userScore;
+            }
+
+            Debug.Log(userScore);
 
             yield return new WaitForSeconds(0.75f);
 
@@ -131,21 +149,21 @@ public class UIController : MonoBehaviour
 
     private void GreenClicked()
     {
-        Debug.Log("Green has been pressed.");
+        userInput = 1;
     }
 
     private void RedClicked()
     {
-        Debug.Log("Red has been pressed.");
+        userInput = 2;
     }
 
     private void BlueClicked()
     {
-        Debug.Log("Blue has been pressed.");
+        userInput = 3;
     }
 
     private void YellowClicked()
     {
-        Debug.Log("Yellow has been pressed.");
+        userInput = 4;
     }
 }
