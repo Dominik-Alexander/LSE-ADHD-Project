@@ -85,6 +85,11 @@ public class UIController : MonoBehaviour
             }
 
             yield return new WaitForSeconds(2.0f);
+
+            lbColorWord.style.color = Color.white;
+            lbColorWord.text = ".";
+
+            yield return new WaitForSeconds(0.75f);
         }
     }
 
