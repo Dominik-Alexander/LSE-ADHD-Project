@@ -1,9 +1,6 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
-using Random = System.Random;
 
 public class UIController : MonoBehaviour
 {
@@ -54,35 +51,40 @@ public class UIController : MonoBehaviour
         btRed = veButtonContainer.Q<Button>("BtRed");
         btBlue = veButtonContainer.Q<Button>("BtBlue");
         btYellow = veButtonContainer.Q<Button>("BtYellow");
+
+        StartCoroutine(ChangeColorAndTextRoutine());
     }
 
-    // Update is called once per frame
-    void Update()
+    IEnumerator ChangeColorAndTextRoutine()
     {
-        Random randomizer = new Random();
-
-        ChangeColor(randomizer.Next(1, 5));
-        ChangeText(randomizer.Next(1, 5));
-
-        lbColorWord.text = colorWordText.ToString();
-
-        switch(colorWordColor)
+        while (true)
         {
-            case 0:
-                lbColorWord.style.color = new Color(255, 255, 255);
-                break;
-            case (ColorWordColor) 1:
-                lbColorWord.style.color = new Color(0, 255, 0);
-                break;
-            case (ColorWordColor) 2:
-                lbColorWord.style.color = new Color(255, 0, 0);
-                break;
-            case (ColorWordColor) 3:
-                lbColorWord.style.color = new Color(0, 0, 255);
-                break;
-            case (ColorWordColor) 4:
-                lbColorWord.style.color = new Color(255, 255, 0);
-                break;
+            // Change color and text logic
+            ChangeColor(Random.Range(1, 5));
+            ChangeText(Random.Range(1, 5));
+
+            lbColorWord.text = colorWordText.ToString();
+
+            switch (colorWordColor)
+            {
+                case 0:
+                    lbColorWord.style.color = Color.white;
+                    break;
+                case (ColorWordColor)1:
+                    lbColorWord.style.color = Color.green;
+                    break;
+                case (ColorWordColor)2:
+                    lbColorWord.style.color = Color.red;
+                    break;
+                case (ColorWordColor)3:
+                    lbColorWord.style.color = Color.blue;
+                    break;
+                case (ColorWordColor)4:
+                    lbColorWord.style.color = Color.yellow;
+                    break;
+            }
+
+            yield return new WaitForSeconds(2.0f);
         }
     }
 
