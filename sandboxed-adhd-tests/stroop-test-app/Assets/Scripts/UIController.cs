@@ -35,6 +35,10 @@ public class UIController : MonoBehaviour
     ColorWordColor colorWordColor;
     ColorWordText colorWordText;
 
+    int randomizedStorage = 0;
+    bool running = false;
+    int numIter = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -52,16 +56,27 @@ public class UIController : MonoBehaviour
         btBlue = veButtonContainer.Q<Button>("BtBlue");
         btYellow = veButtonContainer.Q<Button>("BtYellow");
 
+        running = true;
+
         StartCoroutine(ChangeColorAndTextRoutine());
     }
 
     IEnumerator ChangeColorAndTextRoutine()
     {
-        while (true)
+        while (running)
         {
-            // Change color and text logic
-            ChangeColor(Random.Range(1, 5));
-            ChangeText(Random.Range(1, 5));
+            ++numIter;
+
+            if(numIter % 4 == 0)
+            {
+                randomizedStorage = Random.Range(1, 5);
+                ChangeColor(randomizedStorage);
+                ChangeText(randomizedStorage);
+            } else
+            {
+                ChangeColor(Random.Range(1, 5));
+                ChangeText(Random.Range(1, 5));
+            }
 
             lbColorWord.text = colorWordText.ToString();
 
@@ -90,6 +105,11 @@ public class UIController : MonoBehaviour
             lbColorWord.text = ".";
 
             yield return new WaitForSeconds(0.75f);
+
+            if(numIter == 15)
+            {
+                running = false;
+            }
         }
     }
 
