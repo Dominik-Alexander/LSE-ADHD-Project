@@ -2,6 +2,8 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UIElements;
 
+// TODO: Clean up all this mess and find the bug.
+
 public class UIController : MonoBehaviour
 {
     VisualElement root;
